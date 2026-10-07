@@ -44,7 +44,10 @@ export default function RecentTable({ ...props }) {
     navigate(`/${entity}/update/${record._id}`);
   };
   const handleDownload = (record) => {
-    window.open(`${DOWNLOAD_BASE_URL}${entity}/${entity}-${record._id}.pdf`, '_blank');
+    request.download({
+      url: `${DOWNLOAD_BASE_URL}${entity}/${entity}-${record._id}.pdf`,
+      fileName: `${entity}-${record._id}.pdf`,
+    });
   };
 
   dataTableColumns = [

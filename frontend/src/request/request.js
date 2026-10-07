@@ -298,5 +298,28 @@ const request = {
       return errorHandler(error);
     }
   },
+
+  // Fetches a PDF from the protected /download endpoint with the auth token
+  // and triggers a browser file download. window.open() cannot send Authorization
+  // headers, so this method is required after the /download route was secured.
+  download: async ({ url, fileName }) => {
+    try {
+      includeToken();
+      const response = await axios.get(url, {
+        responseType: 'blob',
+        baseURL: '', // override baseURL since url is already absolute
+      });
+      const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.setAttribute('download', fileName);
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      return errorHandler(error);
+    }
+  },
 };
 export default request;
