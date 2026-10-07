@@ -39,6 +39,10 @@ export default function CustomerForm({ isUpdateForm = false }) {
           {
             validator: validateEmptyString,
           },
+          {
+            pattern: /^[^0-9]+$/,
+            message: 'Numbers are not allowed',
+          },
         ]}
         style={{
           display: 'inline-block',
@@ -57,6 +61,10 @@ export default function CustomerForm({ isUpdateForm = false }) {
           },
           {
             validator: validateEmptyString,
+          },
+          {
+            pattern: /^[^0-9]+$/,
+            message: 'Numbers are not allowed',
           },
         ]}
         style={{

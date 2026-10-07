@@ -18,6 +18,10 @@ export default function EmployeeForm() {
           {
             required: true,
           },
+          {
+            pattern: /^[^0-9]+$/,
+            message: 'Numbers are not allowed',
+          },
         ]}
       >
         <Input />
@@ -28,6 +32,10 @@ export default function EmployeeForm() {
         rules={[
           {
             required: true,
+          },
+          {
+            pattern: /^[^0-9]+$/,
+            message: 'Numbers are not allowed',
           },
         ]}
       >

@@ -27,6 +27,10 @@ export default function AdminForm({ isUpdateForm = false }) {
           {
             required: true,
           },
+          {
+            pattern: /^[^0-9]+$/,
+            message: 'Numbers are not allowed',
+          },
         ]}
       >
         <Input autoComplete="off" />
@@ -37,6 +41,10 @@ export default function AdminForm({ isUpdateForm = false }) {
         rules={[
           {
             required: true,
+          },
+          {
+            pattern: /^[^0-9]+$/,
+            message: 'Numbers are not allowed',
           },
         ]}
       >

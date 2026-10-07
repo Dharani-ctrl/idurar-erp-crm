@@ -377,6 +377,7 @@ function FormElement({ field, feedback, setFeedback }) {
             required: field.required || false,
             type: filedType[field.type] ?? 'any',
           },
+          ...(field.type === 'phone' ? [{ pattern: /^(?:[+\d()\-\s]+)$/, message: 'Please enter a valid phone number' }] : []),
         ]}
         valuePropName={field.type === 'boolean' ? 'checked' : 'value'}
       >

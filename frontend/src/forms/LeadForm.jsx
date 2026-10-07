@@ -1,4 +1,5 @@
 import { Form, Input, Select } from 'antd';
+import { validatePhoneNumber } from '@/utils/helpers';
 
 import useLanguage from '@/locale/useLanguage';
 
@@ -13,6 +14,10 @@ export default function LeadForm() {
           {
             required: true,
           },
+          {
+            pattern: /^[^0-9]+$/,
+            message: 'Numbers are not allowed',
+          },
         ]}
       >
         <Input />
@@ -24,6 +29,10 @@ export default function LeadForm() {
         rules={[
           {
             required: true,
+          },
+          {
+            pattern: /^[^0-9]+$/,
+            message: 'Numbers are not allowed',
           },
         ]}
       >
@@ -48,6 +57,10 @@ export default function LeadForm() {
         rules={[
           {
             required: true,
+          },
+          {
+            pattern: validatePhoneNumber,
+            message: 'Please enter a valid phone number',
           },
         ]}
       >
